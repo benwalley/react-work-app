@@ -1,0 +1,56 @@
+.task {
+	width: 30%;
+	border: 1px solid black;
+	position: relative;
+	padding:5px;
+	border-radius:2px;
+}
+
+.priority {
+	position: absolute;
+	right:0;
+	top:0;
+	height:100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.redRadio {
+	background: red;
+}
+
+.yellowRadio {
+	background: yellow;
+}
+
+.greenRadio {
+	background: green;
+}
+
+.red {
+	background: #ffa1a1;
+}
+
+.yellow {
+	background: #ffff98;
+}
+
+.green {
+	background: #83bf83;;
+}
+
+input[type="radio"] {
+	appearance: none;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	margin: 5px;
+}
+
+input[type="radio"]:checked {
+	border: 2px solid black;
+}
+
+input[type="radio"]:focus {
+	outline: none;
+}

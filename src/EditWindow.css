@@ -1,0 +1,34 @@
+.edit-window {
+	position: absolute;
+	width: 60%;
+	height: 60%;
+	top:20%;
+	left:20%;
+	border: 1px solid black;
+	border-radius: 3px;
+	background: #ffffffb5;
+}
+
+.outer {
+	width:100vw;
+	height:100vh;
+	left:0;
+	right:0;
+	bottom:0;
+	top: 0;
+	background: #8080809e;
+	position: absolute;
+}
+
+.close-button {
+	position: absolute;
+	top:0;
+	right:0;
+	width:20px;
+	height:20px;
+	text-align: center;
+	background:red;
+	padding: 5px;
+	color: white;
+	cursor: pointer;
+}

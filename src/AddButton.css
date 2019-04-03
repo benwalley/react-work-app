@@ -1,0 +1,9 @@
+.add-task-button {
+	width:100%;
+	padding: 5px;
+	background: green;
+	color: white;
+	font-size: 35px;
+	margin: 10px auto;
+	border: none;
+}
