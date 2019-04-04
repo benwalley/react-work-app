@@ -9,6 +9,24 @@
 	background: #ffffffb5;
 }
 
+.formSection {
+	padding: 10px;
+}
+
+.formSection input {
+	padding:10px;
+	margin: 5px;
+	width:50%;
+	border: 1px solid black;
+	border-radius: 2px;
+	font-size: 16px;
+	letter-spacing: 1px;
+}
+
+.formSection label {
+	display: block;
+}
+
 .outer {
 	width:100vw;
 	height:100vh;
@@ -31,4 +49,10 @@
 	padding: 5px;
 	color: white;
 	cursor: pointer;
+}
+
+#note {
+	width:100%;
+	float:left;
+	height:100px;
 }

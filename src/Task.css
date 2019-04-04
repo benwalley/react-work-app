@@ -4,6 +4,9 @@
 	position: relative;
 	padding:5px;
 	border-radius:2px;
+	margin: 10px;
+	width: calc(100%/3 - 20px);
+	box-sizing: border-box;
 }
 
 .priority {

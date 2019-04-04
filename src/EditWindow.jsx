@@ -16,6 +16,10 @@ class EditWindow extends React.Component {
 		this.props.closeEditWindow()
 	}
 
+	handleTaskUpdate = (event) => {
+	 	this.props.handleTaskUpdate(event);	
+	}
+
   render() {
     return (
     	<div>
@@ -23,20 +27,26 @@ class EditWindow extends React.Component {
       		<div className="edit-window">
       			<div className="close-button" onClick={this.closeWindow}>X</div>
       			<form>
-      				<label name="title" for="title">Title:</label>
-      				<input type="text" id="title" value={this.state.data.title}/>
-
-      				<label name="due" for="due">Due Date:</label>
-      				<input type="date" id="due" value={this.state.data.due}/>
-
-      				<label name="description" for="description">Description:</label>
-      				<input type="text" id="description" value={this.state.data.description}/>
-
-      				<label name="status" for="status">Status:</label>
-      				<input type="text" id="status" value={this.state.data.status}/>
-
-      				<label name="notes" for="notes">Notes:</label>
-      				<textarea id="notes" value={this.state.data.notes}/>
+	      			<div className="formSection">
+	      				<label name="title" htmlFor="title">Title:</label>
+	      				<input type="text" id="title" value={this.state.data.title} onChange={this.handleTaskUpdate}/>
+	      			</div>
+	      			<div className="formSection">
+	      				<label name="due" htmlFor="due">Due Date:</label>
+	      				<input type="text" id="due" value={this.state.data.due} onChange={this.handleTaskUpdate}/>
+	      			<div className="formSection">
+	      			</div>
+	      				<label name="description" htmlFor="description">Description:</label>
+	      				<input type="text" id="description" value={this.state.data.description} onChange={this.handleTaskUpdate}/>
+	      			<div className="formSection">
+	      			</div>
+	      				<label name="status" htmlFor="status">Status:</label>
+	      				<input type="text" id="status" value={this.state.data.status} onChange={this.handleTaskUpdate}/>
+	      			</div>
+	      			<div className="formSection">
+	      				<label name="note" htmlFor="note">Notes:</label>
+	      				<textarea id="note" value={this.state.data.note} onChange={this.handleTaskUpdate}/>
+	      			</div>
       			</form>
       		</div>
       	</div>
