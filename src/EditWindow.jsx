@@ -20,6 +20,27 @@ class EditWindow extends React.Component {
 	 	this.props.handleTaskUpdate(event);	
 	}
 
+	_handleKeyDown = (event) => {
+	    switch( event.keyCode ) {
+	        case 13:
+	            this.props.closeEditWindow()
+	            break;
+	        default: 
+	            break;
+	    }
+	}
+
+	// componentWillMount deprecated in React 16.3
+	componentDidMount(){
+	    document.addEventListener("keydown", this._handleKeyDown);
+	    document.getElementById("title").focus();
+	}
+
+
+	componentWillUnmount() {
+	    document.removeEventListener("keydown", this._handleKeyDown);
+	}
+
   render() {
     return (
     	<div>

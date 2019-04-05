@@ -15,6 +15,7 @@ class App extends Component {
     }
   }
 
+
   addTask = () => {
     let currentState = this.state.tasks;
     currentState.push({
@@ -42,12 +43,20 @@ class App extends Component {
     if(this.state.editWindowOpen) {
       return(
         <EditWindow closeEditWindow = {this.closeEditWindow} data={this.state.tasks[this.state.editWindowIndex]} handleTaskUpdate={this.handleTaskUpdate} index={this.state.editWindowIndex}/>
-        )
+      )
     }
   }
 
-  updatePositions = () => {
+  handleColorChange = () => {
 
+  }
+
+  updatePositions = (originalPos, newPos) => {
+    let newTasks = this.state.tasks;
+    let movingTask = newTasks[originalPos]
+    newTasks.splice(originalPos, 1);
+    newTasks.splice(newPos, 0, movingTask)
+    this.setState({tasks: newTasks});
   }
 
   handleDelete = (index) => {
@@ -87,7 +96,6 @@ class App extends Component {
     if(appData) {
       this.updateFromLocalStorage()
     }
-    console.log(appData);
   }
 
   componentDidUpdate = () => {
@@ -99,7 +107,7 @@ class App extends Component {
       <div className="App">
         <AddButton addTask = {this.addTask}/>
         {this.state.tasks.map((task, index) => {
-          return <Task key={ index } index={index} handleDelete={this.handleDelete} updatePositions={this.updatePositions} openEditWindow={this.openEditWindow} data={this.state.tasks[index]}/>
+          return <Task key={ index } index={index} handleDelete={this.handleDelete} updatePositions={this.updatePositions} openEditWindow={this.openEditWindow} data={this.state.tasks[index]} handleColorChange={this.handleColorChange} updateStorage={this.updateLocalStorage}/>
         })}
         {this.editWindow()}
       </div>
