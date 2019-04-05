@@ -4,27 +4,12 @@
 	padding:10px;
 	border-radius:2px;
 	margin: 10px;
-	width: calc(100%/4 - 20px);
+
 	box-sizing: border-box;
+	transition: all 1s;
 }
 
-@media only screen and (max-width: 1440px) {
-	.task {
-		width: calc(100%/3 - 20px);
-	}
-}
 
-@media only screen and (max-width: 1024px) {
-	.task {
-		width: calc(100%/2 - 20px);
-	}
-}
-
-@media only screen and (max-width: 748px) {
-	.task {
-		width: calc(100% - 20px);
-	}
-}
 
 .priority {
 	position: absolute;

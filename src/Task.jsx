@@ -30,7 +30,7 @@ class Task extends React.Component {
   render() {
     return (
       <div className={this.props.data.taskClass}>
-      	<div className="edit" onClick={this.handleOpenEditWindow}><i class="far fa-edit"></i></div>
+      	<div className="edit" onClick={this.handleOpenEditWindow}><i className="far fa-edit"></i></div>
         <h2 className="title">
         	{this.props.data.title}
         </h2>
@@ -47,7 +47,7 @@ class Task extends React.Component {
         	<div className="section-title">Description</div>
         	<div className="section-data">{this.props.data.desctiption}</div>
         </div>
-        <div className="delete" onClick={this.handleDelete}><i class="fas fa-trash-alt"></i></div>
+        <div className="delete" onClick={this.handleDelete}><i className="fas fa-trash-alt"></i></div>
         <div className="status section">
         	<div className="section-title">Status</div>
         	<div className="section-data">{this.props.data.status}</div>

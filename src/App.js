@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AddButton from './AddButton.jsx';
 import Task from './Task.jsx';
 import EditWindow from './EditWindow.jsx';
+// import './grabbable.js';
 import './App.css';
 
 class App extends Component {
@@ -63,6 +64,34 @@ class App extends Component {
 
     tasks[currentTask][event.target.id] = event.target.value
     this.setState({tasks: tasks});
+
+    this.updateLocalStorage()
+  }
+
+  updateLocalStorage = () => {
+    let stateData = JSON.stringify(this.state);
+    let storage = window.localStorage;
+    storage.setItem("myTasks", stateData)
+  }
+
+  updateFromLocalStorage = () => {
+    let storage = window.localStorage;
+    let appData = storage.getItem('myTasks');
+    appData = JSON.parse(appData);
+    this.setState(appData);
+  }
+
+  componentDidMount() {
+    let storage = window.localStorage;
+    let appData = storage.getItem('myTasks');
+    if(appData) {
+      this.updateFromLocalStorage()
+    }
+    console.log(appData);
+  }
+
+  componentDidUpdate = () => {
+    this.updateLocalStorage()
   }
 
   render() {
