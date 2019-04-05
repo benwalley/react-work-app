@@ -1,21 +1,37 @@
 .task {
-	width: 30%;
 	border: 1px solid black;
 	position: relative;
-	padding:5px;
+	padding:10px;
 	border-radius:2px;
 	margin: 10px;
-	width: calc(100%/3 - 20px);
+	width: calc(100%/4 - 20px);
 	box-sizing: border-box;
+}
+
+@media only screen and (max-width: 1440px) {
+	.task {
+		width: calc(100%/3 - 20px);
+	}
+}
+
+@media only screen and (max-width: 1024px) {
+	.task {
+		width: calc(100%/2 - 20px);
+	}
+}
+
+@media only screen and (max-width: 748px) {
+	.task {
+		width: calc(100% - 20px);
+	}
 }
 
 .priority {
 	position: absolute;
 	right:0;
-	top:0;
-	height:100%;
+	bottom:0;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 }
 
 .redRadio {
@@ -47,13 +63,58 @@ input[type="radio"] {
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
-	margin: 5px;
-}
-
-input[type="radio"]:checked {
-	border: 2px solid black;
+	margin: 10px 10px;
+	box-shadow: 0 0 5px 1px black;
 }
 
 input[type="radio"]:focus {
 	outline: none;
+}
+
+.delete {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height:20px;
+	width: 20px;
+	padding: 10px;
+	font-size: 20px;
+	cursor: pointer;
+	color: red;
+	text-shadow: 0px 0px 20px white;
+}
+
+.edit {
+	padding: 10px;
+	font-size: 20px;
+	position: absolute;	
+	top:0;
+	left:0;	
+}
+
+.section-title {
+	float: left;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.section-data {
+	
+
+}
+
+.section {
+	width: 100%;
+	float: left;
+	margin: 5px 0;
+}
+
+.title {
+	margin-top: 30px;
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+.note {
+	margin-bottom: 30px;
 }

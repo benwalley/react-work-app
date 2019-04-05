@@ -30,18 +30,32 @@ class Task extends React.Component {
   render() {
     return (
       <div className={this.props.data.taskClass}>
-      	<div className="edit" onClick={this.handleOpenEditWindow}>Edit</div>
-        <div className="title">Task: {this.props.data.title}</div>
+      	<div className="edit" onClick={this.handleOpenEditWindow}><i class="far fa-edit"></i></div>
+        <h2 className="title">
+        	{this.props.data.title}
+        </h2>
         <div className="priority">
         	<input type="radio" name="priority" value="red" className="redRadio" checked={this.props.data.priority === "red"} onChange={this.handlePriorityChange}/>
         	<input type="radio" name="priority" value="yellow" className="yellowRadio" checked={this.props.data.priority === "yellow"} onChange={this.handlePriorityChange}/>
         	<input type="radio" name="priority" value="green" className="greenRadio" checked={this.props.data.priority === "green"} onChange={this.handlePriorityChange}/>
         </div>
-        <div className="due-date">Due: {this.props.data.due}</div>
-        <div className="description">Description: {this.props.data.desctiption}</div>
-        <div className="delete" onClick={this.handleDelete}>X</div>
-        <div className="status">Status: {this.props.data.status}</div>
-        <div className="note">Notes: {this.props.data.note}</div>
+        <div className="due-date section">
+        		<div className="section-title">Due</div>
+        		<div className="section-data">{this.props.data.due}</div>
+        </div>
+        <div className="description section">
+        	<div className="section-title">Description</div>
+        	<div className="section-data">{this.props.data.desctiption}</div>
+        </div>
+        <div className="delete" onClick={this.handleDelete}><i class="fas fa-trash-alt"></i></div>
+        <div className="status section">
+        	<div className="section-title">Status</div>
+        	<div className="section-data">{this.props.data.status}</div>
+        </div>
+        <div className="note section">
+        	<div className="section-title">Notes</div>
+        	<div className="section-data">{this.props.data.note}</div>
+        </div>
       </div>
     );
   }

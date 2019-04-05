@@ -1,5 +1,5 @@
 .edit-window {
-	position: absolute;
+	position: fixed;
 	width: 60%;
 	height: 60%;
 	top:20%;
@@ -35,7 +35,7 @@
 	bottom:0;
 	top: 0;
 	background: #8080809e;
-	position: absolute;
+	position: fixed;
 }
 
 .close-button {
@@ -55,4 +55,6 @@
 	width:100%;
 	float:left;
 	height:100px;
+	font-size: 16px;
+	font-family: inherit;
 }
