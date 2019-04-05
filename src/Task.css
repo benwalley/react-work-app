@@ -40,16 +40,33 @@
 	background: green;
 }
 
+
+.blueRadio {
+	background: blue;
+}
+
+.purpleRadio {
+	background: purple;
+}
+
 .red {
-	background: #ffa1a1;
+	background: #ffa5a5;
 }
 
 .yellow {
-	background: #ffff98;
+	background: #fff9a5;
 }
 
 .green {
-	background: #83bf83;;
+	background: #bbffa5;
+}
+
+.blue {
+	background: #a5e1ff;
+}
+
+.purple {
+	background: #eb98ff;
 }
 
 input[type="radio"] {

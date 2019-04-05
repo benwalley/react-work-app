@@ -79,6 +79,8 @@ class Task extends React.Component {
         	<input type="radio" name="priority" value="red" className="redRadio" checked={this.props.data.priority === "red"} onChange={this.handlePriorityChange}/>
         	<input type="radio" name="priority" value="yellow" className="yellowRadio" checked={this.props.data.priority === "yellow"} onChange={this.handlePriorityChange}/>
         	<input type="radio" name="priority" value="green" className="greenRadio" checked={this.props.data.priority === "green"} onChange={this.handlePriorityChange}/>
+        	<input type="radio" name="priority" value="blue" className="blueRadio" checked={this.props.data.priority === "blue"} onChange={this.handlePriorityChange}/>
+        	<input type="radio" name="priority" value="purple" className="purpleRadio" checked={this.props.data.priority === "purple"} onChange={this.handlePriorityChange}/>
         </div>
         <div className="due-date section" onDragOver={(e) => this.handleDontDrop (e)}>
         		<div className="section-title">Due</div>
