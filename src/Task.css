@@ -3,26 +3,27 @@
 	position: relative;
 	padding:10px;
 	border-radius:2px;
-	margin: 10px;
-
+	margin: 5px;
 	box-sizing: border-box;
 	transition: all 100ms;
+	min-height: 56px;
+	color: black;
 }
 
 .task.hovered:before {
-	height: calc(100% + 20px);
+	height: 2px;
 	position: absolute;
-	left: -11px;
-	top:-10px;
-	width:2px;
+	left: -10px;
+	top:-7px;
+	width: calc(100% + 20px);
 	background: blue;
 	content:'';
 }
 
 .priority {
 	position: absolute;
-	right:0;
-	bottom:0;
+	left:0;
+	top:0;
 	display: flex;
 	flex-direction: row;
 	z-index: 2;
@@ -74,7 +75,7 @@ input[type="radio"] {
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
-	margin: 10px 10px;
+	margin: 19px 10px;
 	box-shadow: 0 0 5px 1px black;
 }
 
@@ -86,10 +87,10 @@ input[type="radio"]:focus {
 	position: absolute;
 	top: 0;
 	right: 0;
-	height:20px;
-	width: 20px;
+	height:30px;
+	width: 30px;
 	padding: 10px;
-	font-size: 20px;
+	font-size: 25px;
 	cursor: pointer;
 	color: red;
 	text-shadow: 0px 0px 20px white;
@@ -127,6 +128,9 @@ input[type="radio"]:focus {
 	margin-top: 0px;
 	text-align: center;
 	margin-bottom: 5px;
+	margin-left: 250px;
+	margin-right: 50px;
+	text-align: left;
 }
 
 .note {

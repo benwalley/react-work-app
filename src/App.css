@@ -1,23 +1,73 @@
 .App {
-  width: 80%;
-  margin: 0 auto;
+  width: 60%;
+  margin: 0 5% 5%;
   display: flex;
   flex-wrap: wrap;
   margin-top:80px;
   display: grid;
-  grid-template-columns:repeat(4, 1fr);
 }
 
-@media only screen and (max-width: 1440px) {
-  .App {
-    grid-template-columns:repeat(3, 1fr);
-  }
+.dark {
+  background: black;
+  color: white;
 }
 
-@media only screen and (max-width: 1024px) {
-  .App {
-    grid-template-columns:repeat(2, 1fr);
-  }
+.dark-mode-control {
+  display: flex;
+}
+
+.dark-mode-control.dark {
+  color: white;
+}
+
+.toggle {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 35px;
+  height: 22px;
+  border: 2px solid #636363;
+  border-radius: 11px;
+  box-sizing: border-box;
+  position: relative;
+  background: #d8d8d8;
+}
+
+.toggle:focus {
+  outline: none;
+}
+  
+.toggle:after {
+  content: '';
+  width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  background: green;
+  display: block;
+  position: absolute;
+  left: -1px;
+  right: auto;
+  transition: all 400ms;
+
+}
+
+.toggle:checked {
+  background: white;
+}
+
+.toggle:checked:after {
+    right: 0;
+    left: auto;
+}
+
+.toggle:before {
+  content: 'OFF';
+  position: absolute;
+  left: 120%;
+}
+
+.toggle:checked:before {
+  content: "ON";
+  color: white;
 }
 
 @media only screen and (max-width: 748px) {

@@ -20,14 +20,13 @@ class Task extends React.Component {
 	};
 
 	handleOpenEditWindow = () => {
-		this.props.openEditWindow(this.props.index)
+		this.props.openEditWindow(this.props.index);
+		document.getElementById("title").focus();
 	}
 
 	handleDelete = () => {
-		let x = window.confirm("Are you sure you want to delete this?")
-		if(x == true){
-			this.props.handleDelete(this.props.index)
-		}
+
+		this.props.handleDelete(this.props.index)
 	}
 
 	handleDragOver = (event) => {
@@ -55,7 +54,6 @@ class Task extends React.Component {
 		let newData = this.props.data;
 		newData.taskClass = "task " + this.props.data.priority + ' hovered';
 		this.setState({data: newData})
-
 	}
 
 	handleDragLeave =(event) => {
@@ -82,23 +80,7 @@ class Task extends React.Component {
         	<input type="radio" name="priority" value="blue" className="blueRadio" checked={this.props.data.priority === "blue"} onChange={this.handlePriorityChange}/>
         	<input type="radio" name="priority" value="purple" className="purpleRadio" checked={this.props.data.priority === "purple"} onChange={this.handlePriorityChange}/>
         </div>
-        <div className="due-date section" onDragOver={(e) => this.handleDontDrop (e)}>
-        		<div className="section-title">Due</div>
-        		<div className="section-data">{this.props.data.due}</div>
-        </div>
-        <div className="description section" onDragOver={(e) => this.handleDontDrop (e)}>
-        	<div className="section-title">Description</div>
-        	<div className="section-data">{this.props.data.description}</div>
-        </div>
-        <div className="delete" onDragOver={(e) => this.handleDontDrop (e)} onClick={this.handleDelete}><i className="fas fa-trash-alt"></i></div>
-        <div className="status section">
-        	<div className="section-title">Status</div>
-        	<div className="section-data">{this.props.data.status}</div>
-        </div>
-        <div className="note section" onDragOver={(e) => this.handleDontDrop (e)}>
-        	<div className="section-title">Notes</div>
-        	<div className="section-data">{this.props.data.note}</div>
-        </div>
+        <div className="delete" onDragOver={(e) => this.handleDontDrop (e)} onClick={this.handleDelete}><i className="fas fa-trash-alt"></i></div>  
         <div className="cover" onDragEnter={(e) =>this.handleDragEnter(e)} onDragLeave={(e) =>this.handleDragLeave(e)} onClick={this.handleOpenEditWindow}></div>
       </div>
     );

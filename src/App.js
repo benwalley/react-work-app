@@ -9,14 +9,17 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: [],
+      tasks: [{title: "", priority: "green", due: "", description: "", status: "", note: "", taskClass: 'task green'}],
       editWindowOpen: false,
-      editWindowIndex: undefined
+      editWindowIndex: 0,
+      darkModeOn: false,
+      appClass: 'App'
     }
   }
 
 
   addTask = () => {
+    let newTaskIndex = this.state.tasks.length;
     let currentState = this.state.tasks;
     currentState.push({
       title: "",
@@ -27,28 +30,13 @@ class App extends Component {
       note: "",
       taskClass: 'task green'
     })
-    this.setState({tasks: currentState})
+    this.setState({tasks: currentState});
+    this.setState({editWindowIndex: newTaskIndex});
+    document.getElementById("title").focus();
   }
 
   openEditWindow = (index) => {
-    this.setState({editWindowOpen: true})
     this.setState({editWindowIndex: index})
-  }
-
-  closeEditWindow = () => {
-    this.setState({editWindowOpen: false})
-  }
-
-  editWindow = () => {
-    if(this.state.editWindowOpen) {
-      return(
-        <EditWindow closeEditWindow = {this.closeEditWindow} data={this.state.tasks[this.state.editWindowIndex]} handleTaskUpdate={this.handleTaskUpdate} index={this.state.editWindowIndex}/>
-      )
-    }
-  }
-
-  handleColorChange = () => {
-
   }
 
   updatePositions = (originalPos, newPos) => {
@@ -60,11 +48,19 @@ class App extends Component {
   }
 
   handleDelete = (index) => {
-    console.log(index)
     let tasks = this.state.tasks;
     tasks.splice(index, 1)
-    console.log(tasks)
     this.setState({tasks: tasks})
+    if(index === 0) {
+      var newEditIndex = 0;
+    } else {
+      var newEditIndex = index - 1;
+    }
+    this.setState({editWindowIndex: newEditIndex})
+    // if there are no more tasks, create an empty one
+    if(this.state.tasks.length === 0) {
+      this.addTask();
+    }
   }
 
   handleTaskUpdate = (event) => {
@@ -98,18 +94,38 @@ class App extends Component {
     }
   }
 
+  handleDarkMode = () => {
+    if(this.state.darkModeOn) {
+      this.setState({darkModeOn: false})
+      document.querySelector("body").classList.remove("dark");
+    } else {
+      this.setState({darkModeOn: true})
+      document.querySelector("body").classList.add("dark");
+    }
+  }
+
   componentDidUpdate = () => {
     this.updateLocalStorage()
   }
 
+  componentDidMount = () => {
+    this.handleDarkMode()
+  }
+
   render() {
     return (
-      <div className="App">
+      <div className='App'>
+        <div className='dark-mode-control'>
+          <label htmlFor="dark-mode-toggle">
+            Dark mode
+          </label>
+          <input onClick={this.handleDarkMode} className="toggle" type="checkbox" id="dark-mode-toggle" checked={this.state.darkModeOn}/>
+        </div>
         <AddButton addTask = {this.addTask}/>
         {this.state.tasks.map((task, index) => {
           return <Task key={ index } index={index} handleDelete={this.handleDelete} updatePositions={this.updatePositions} openEditWindow={this.openEditWindow} data={this.state.tasks[index]} handleColorChange={this.handleColorChange} updateStorage={this.updateLocalStorage}/>
         })}
-        {this.editWindow()}
+        <EditWindow closeEditWindow = {this.closeEditWindow} data={this.state.tasks[this.state.editWindowIndex]} handleTaskUpdate={this.handleTaskUpdate} index={this.state.editWindowIndex}/>
       </div>
     );
   }
