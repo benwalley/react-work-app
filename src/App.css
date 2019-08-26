@@ -1,10 +1,12 @@
 .App {
-  width: 60%;
-  margin: 0 5% 5%;
-  display: flex;
-  flex-wrap: wrap;
-  margin-top:80px;
-  display: grid;
+  width: 100%;
+  margin: 0;
+  min-height: 100vh;
+
+}
+
+.main-container {
+  padding:80px 35% 5% 5%;
 }
 
 .dark {
@@ -31,10 +33,6 @@
   position: relative;
   background: #d8d8d8;
 }
-
-.toggle:focus {
-  outline: none;
-}
   
 .toggle:after {
   content: '';
@@ -50,11 +48,11 @@
 
 }
 
-.toggle:checked {
+.toggle.on {
   background: white;
 }
 
-.toggle:checked:after {
+.toggle.on:after {
     right: 0;
     left: auto;
 }
@@ -65,7 +63,7 @@
   left: 120%;
 }
 
-.toggle:checked:before {
+.toggle.on:before {
   content: "ON";
   color: white;
 }

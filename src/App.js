@@ -9,11 +9,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: [{title: "", priority: "green", due: "", description: "", status: "", note: "", taskClass: 'task green'}],
+      tasks: [{title: "", priority: "green", due: "", timerClass: 'play-pause paused', timeRunning: false, description: "", status: "", note: "", hours: 0, min: 0, totalTime: 0, link: "", taskClass: 'task green'}],
       editWindowOpen: false,
       editWindowIndex: 0,
       darkModeOn: false,
-      appClass: 'App'
+      appClass: 'App',
+      darkModeToggleClass: 'toggle'
     }
   }
 
@@ -28,7 +29,13 @@ class App extends Component {
       description: "",
       status: "",
       note: "",
-      taskClass: 'task green'
+      taskClass: 'task green',
+      link: "",
+      hours: 0,
+      min: 0,
+      totalTime: 0,
+      timeRunning: false,
+      timerClass: "play-pause paused"
     })
     this.setState({tasks: currentState});
     this.setState({editWindowIndex: newTaskIndex});
@@ -63,6 +70,29 @@ class App extends Component {
     }
   }
 
+  stopTimer = (index) => {
+    var tasks = this.state.tasks;
+    tasks[index].timeRunning = false;
+    tasks[index].timerClass = "play-pause paused"
+  }
+
+  handleToggleTime = (index) => {
+    for (var i = 0; i < this.state.tasks.length; i++) {
+      this.stopTimer(i);
+    }
+    var task = this.state.tasks;
+    console.log(index)
+    if(task[index].timeRunning) {
+      task[index].timeRunning = false
+      task[index].timerClass = "play-pause paused"
+    } else {
+      task[index].timeRunning = true
+      task[index].timerClass = "play-pause playing"
+    }
+
+    this.setState({tasks: task})
+  }
+
   handleTaskUpdate = (event) => {
     let currentTask = this.state.editWindowIndex;
     let tasks = this.state.tasks;
@@ -94,13 +124,15 @@ class App extends Component {
     }
   }
 
-  handleDarkMode = () => {
+  toggleDarkMode = () => {
     if(this.state.darkModeOn) {
       this.setState({darkModeOn: false})
-      document.querySelector("body").classList.remove("dark");
+      this.setState({darkModeToggleClass: 'toggle off'});
+      this.setState({appClass: 'App'})
     } else {
       this.setState({darkModeOn: true})
-      document.querySelector("body").classList.add("dark");
+      this.setState({darkModeToggleClass: 'toggle on'});
+      this.setState({appClass: 'App dark'})
     }
   }
 
@@ -108,24 +140,22 @@ class App extends Component {
     this.updateLocalStorage()
   }
 
-  componentDidMount = () => {
-    this.handleDarkMode()
-  }
-
   render() {
     return (
-      <div className='App'>
-        <div className='dark-mode-control'>
-          <label htmlFor="dark-mode-toggle">
+      <div className={this.state.appClass}>
+        <div className="main-container">
+          <div className='dark-mode-control'>
+          <label>
             Dark mode
           </label>
-          <input onClick={this.handleDarkMode} className="toggle" type="checkbox" id="dark-mode-toggle" checked={this.state.darkModeOn}/>
+          <div onClick={this.toggleDarkMode} className={this.state.darkModeToggleClass}></div>
         </div>
         <AddButton addTask = {this.addTask}/>
         {this.state.tasks.map((task, index) => {
           return <Task key={ index } index={index} handleDelete={this.handleDelete} updatePositions={this.updatePositions} openEditWindow={this.openEditWindow} data={this.state.tasks[index]} handleColorChange={this.handleColorChange} updateStorage={this.updateLocalStorage}/>
         })}
-        <EditWindow closeEditWindow = {this.closeEditWindow} data={this.state.tasks[this.state.editWindowIndex]} handleTaskUpdate={this.handleTaskUpdate} index={this.state.editWindowIndex}/>
+        <EditWindow handleToggleTime={this.handleToggleTime} closeEditWindow = {this.closeEditWindow} data={this.state.tasks[this.state.editWindowIndex]} handleTaskUpdate={this.handleTaskUpdate} index={this.state.editWindowIndex}/>
+        </div>
       </div>
     );
   }
